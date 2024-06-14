@@ -13,9 +13,3 @@ jobs:
       - run: echo Hello, world!
       - run: echo "TODAY=$(date +%y-%m-%d)" >>GITHUB_ENV
       
-  clone-repo:
-  
-    runs-on: windows-latest
-    
-    steps:
-      - run: echo Someone is CLoned!
