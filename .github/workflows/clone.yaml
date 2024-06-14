@@ -1,0 +1,21 @@
+name: Notify on Repository Clone
+
+on:
+  repository_dispatch:
+    types: [clone]
+
+jobs:
+  notify-clone:
+    runs-on: windows-latest
+    steps:
+      - name: Notify on Clone
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: |
+            Someone has cloned the repository!
+            Cloned by: ${{ github.actor }}
+            Repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
